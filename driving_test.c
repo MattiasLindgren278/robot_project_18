@@ -112,20 +112,18 @@ void rotate(char direction, int runtime_msec){
         case ('R'):
             printf("Rotating right\n");
             // Set speed for individual motors
-            tacho_set_speed_sp(MOTOR_LEFT, 0.5);
-            tacho_set_speed_sp(MOTOR_RIGHT, -0.5);
+            tacho_set_speed_sp(MOTOR_LEFT, max_hastighet * 0.5);
+            tacho_set_speed_sp(MOTOR_RIGHT, max_hastighet * -0.5);
             // Start both motors
-            tacho_run_forever(MOTOR_LEFT);
-            tacho_run_forever(MOTOR_RIGHT);
+            tacho_run_forever(MOTOR_BOTH);
             break;
         case ('L'):
             printf("Rotating left\n");
             // Set speed for individual motors
-            tacho_set_speed_sp(MOTOR_RIGHT, 0.5);
-            tacho_set_speed_sp(MOTOR_LEFT, -0.5);
+            tacho_set_speed_sp(MOTOR_RIGHT, max_hastighet * 0.5);
+            tacho_set_speed_sp(MOTOR_LEFT, max_hastighet * -0.5);
             // Start both motors
-            tacho_run_forever(MOTOR_RIGHT);
-            tacho_run_forever(MOTOR_LEFT);
+            tacho_run_forever(MOTOR_BOTH);
             break;
         default:
             printf("Incorrect direction given in function rotate(). Valid directions: 'R' or 'L'.");
