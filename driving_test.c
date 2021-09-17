@@ -26,10 +26,11 @@ void rotate(char, int);
 
 int main(void){  
     //Init failed, "dirty" exit
-    if (!init())
+    if (!init()){
         printf("Shutting down due to an error...\n");
         sleep(3000);
         return 1;
+    }
 
     touchSensor = sensor_search(LEGO_EV3_TOUCH);
 	touch_set_mode_touch(touchSensor);
