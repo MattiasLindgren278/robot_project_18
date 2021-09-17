@@ -78,7 +78,7 @@ int init(){
         max_hastighet = tacho_get_max_speed(MOTOR_LEFT, 0);
         tacho_reset(MOTOR_BOTH);
         printf("Initialization successful!\n"
-        "*** Welcome! ***\n");
+               "******** Welcome! ********\n");
         sleep(100);
         return 1;
     } 
