@@ -26,8 +26,8 @@ void rotate(char, int);
 
 int main(void){  
     //Init failed, "dirty" exit
-    if (init() == 0)
-        printf("Shutting down...\n");
+    if (!init())
+        printf("Shutting down due to an error...\n");
         sleep(3000);
         return 1;
 
