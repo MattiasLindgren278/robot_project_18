@@ -24,16 +24,22 @@ void stop(int);
 void turn(char, int);
 void rotate(char, int);
 
-int main( void )
-{  
+int main(void){  
     //Init failed, "dirty" exit
-    if (init() == 0) 
+    if (init() == 0)
+        printf("Shutting down...");
+        sleep(3000);
         return 1;
 
     touchSensor = sensor_search(LEGO_EV3_TOUCH);
 	touch_set_mode_touch(touchSensor);
 
 	//HANDLEDNING 2
+    printf("Press sensor to begin routine.\n");
+    sleep(100);
+    while(!sensor_get_value(0, touchSensor, 0));
+
+    //The routine
     drive(1, 3000);
     stop(500);
     drive(-1, 3000);
@@ -45,6 +51,7 @@ int main( void )
     stop(200);
     rotate('R', 1500);
     rotate('L', 1500);
+
     printf("Routine done. Press sensor to exit...\n");
     sleep(100);
     //SLUT HANDLEDNING 2
@@ -52,26 +59,28 @@ int main( void )
     //Shutdown robot by pressing the touch sensor
 	while(!sensor_get_value(0, touchSensor, 0));
 	brick_uninit();
-	printf("Shutting down...\n");
+	printf("Shutting down...");
     sleep(3000);
     return 0;
 }
 
 int init(){
-    if ( !brick_init()) 
+    printf("Initializing...\n");
+
+    if (!brick_init()) 
+        printf("ERROR: Unable to initialize brick.\n");
         return 0;
 
-    printf( "*** ( EV3 ) Hello! ***\n" );
-    sleep( 2000 );
-    
-    if ( tacho_is_plugged( MOTOR_BOTH, TACHO_TYPE__NONE_ )) {
-        max_hastighet = tacho_get_max_speed( MOTOR_LEFT, 0 );
-        tacho_reset( MOTOR_BOTH );
+    if (tacho_is_plugged( MOTOR_BOTH, TACHO_TYPE__NONE_ )){
+        max_hastighet = tacho_get_max_speed(MOTOR_LEFT, 0);
+        tacho_reset(MOTOR_BOTH);
+        printf("Initialization successful!\n"
+        "*** Welcome! ***\n");
         return 1;
     } 
     else {
-        printf( "Anslut vänster motor i port A,\n"
-        "Anslut höger motor i port B.\n");
+        printf("ERROR: No motors connected.\n"
+        "Connect left motor to port A and right motor to port B.\n");
         brick_uninit();
         return 0;
     }
@@ -101,7 +110,7 @@ void turn(char direction, int runtime_msec){
             tacho_stop(MOTOR_LEFT);
             break;
         default:
-            printf("Incorrect direction given in function turn(). Valid directions: 'R' or 'L'.");
+            printf("Incorrect direction given in function turn(). Valid directions: 'R' or 'L'.\n");
             return;
     }
     sleep(runtime_msec);
@@ -127,7 +136,7 @@ void rotate(char direction, int runtime_msec){
             tacho_run_forever(MOTOR_BOTH);
             break;
         default:
-            printf("Incorrect direction given in function rotate(). Valid directions: 'R' or 'L'.");
+            printf("Incorrect direction given in function rotate(). Valid directions: 'R' or 'L'.\n");
             return;
     }
     sleep(runtime_msec);
