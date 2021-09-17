@@ -27,7 +27,7 @@ void rotate(char, int);
 int main(void){  
     //Init failed, "dirty" exit
     if (init() == 0)
-        printf("Shutting down...");
+        printf("Shutting down...\n");
         sleep(3000);
         return 1;
 
@@ -59,7 +59,7 @@ int main(void){
     //Shutdown robot by pressing the touch sensor
 	while(!sensor_get_value(0, touchSensor, 0));
 	brick_uninit();
-	printf("Shutting down...");
+	printf("Shutting down...\n");
     sleep(3000);
     return 0;
 }
@@ -69,6 +69,7 @@ int init(){
 
     if (!brick_init()) 
         printf("ERROR: Unable to initialize brick.\n");
+        sleep(100);
         return 0;
 
     if (tacho_is_plugged( MOTOR_BOTH, TACHO_TYPE__NONE_ )){
@@ -76,12 +77,14 @@ int init(){
         tacho_reset(MOTOR_BOTH);
         printf("Initialization successful!\n"
         "*** Welcome! ***\n");
+        sleep(100);
         return 1;
     } 
     else {
+        brick_uninit();
         printf("ERROR: No motors connected.\n"
         "Connect left motor to port A and right motor to port B.\n");
-        brick_uninit();
+        sleep(100);
         return 0;
     }
 }
