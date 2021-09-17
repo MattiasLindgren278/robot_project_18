@@ -35,10 +35,10 @@ int main( void )
 
 	//HANDLEDNING 2
     drive(1, 3000);
-    stop(200);
+    stop(500);
     drive(-1, 3000);
-    stop(200);
-    drive(1, 0);
+    stop(500);
+    drive(1, 300);
     turn('R', 500);
     turn('L', 1000);
     turn('R', 500);
@@ -69,8 +69,7 @@ int init(){
     } 
     else {
         printf( "Anslut vänster motor i port A,\n"
-        "Anslut höger motor i port B.\n"
-        );
+        "Anslut höger motor i port B.\n");
         brick_uninit();
         return 0;
     }
@@ -90,12 +89,13 @@ void stop(int sleep_time_msec){
 }
 
 void turn(char direction, int runtime_msec){
-    printf("Turning\n");
     switch(direction){
         case ('R'):
+            printf("Turning right\n");
             tacho_stop(MOTOR_RIGHT);
             break;
         case ('L'):
+            printf("Turning left\n");
             tacho_stop(MOTOR_LEFT);
             break;
         default:
@@ -109,6 +109,7 @@ void turn(char direction, int runtime_msec){
 void rotate(char direction, int runtime_msec){
     switch(direction){
         case ('R'):
+            printf("Rotating right\n");
             // Set speed for individual motors
             tacho_set_speed_sp(MOTOR_LEFT, 0.5);
             tacho_set_speed_sp(MOTOR_RIGHT, -0.5);
@@ -116,6 +117,7 @@ void rotate(char direction, int runtime_msec){
             tacho_run_forever(MOTOR_BOTH);
             break;
         case ('L'):
+            printf("Rotating left\n");
             // Set speed for individual motors
             tacho_set_speed_sp(MOTOR_RIGHT, 0.5);
             tacho_set_speed_sp(MOTOR_LEFT, -0.5);
