@@ -45,7 +45,8 @@ int main( void )
     stop(200);
     rotate('R', 1500);
     rotate('L', 1500);
-    printf("Routine done. Press sensor to exit...");
+    printf("Routine done. Press sensor to exit...\n");
+    sleep(100);
     //SLUT HANDLEDNING 2
 
     //Shutdown robot by pressing the touch sensor
