@@ -67,10 +67,11 @@ int main(void){
 int init(){
     printf("Initializing...\n");
 
-    if (!brick_init()) 
+    if (!brick_init()){
         printf("ERROR: Unable to initialize brick.\n");
         sleep(100);
         return 0;
+    }
 
     if (tacho_is_plugged( MOTOR_BOTH, TACHO_TYPE__NONE_ )){
         max_hastighet = tacho_get_max_speed(MOTOR_LEFT, 0);
@@ -80,7 +81,7 @@ int init(){
         sleep(100);
         return 1;
     } 
-    else {
+    else{
         brick_uninit();
         printf("ERROR: No motors connected.\n"
         "Connect left motor to port A and right motor to port B.\n");
