@@ -90,22 +90,20 @@ void stop(int sleep_time_msec){
 }
 
 void turn(char direction, int runtime_msec){
-    printf("Turning");
+    printf("Turning\n");
     switch(direction){
         case ('R'):
             tacho_stop(MOTOR_RIGHT);
-            sleep(runtime_msec);
-            tacho_run_forever(MOTOR_RIGHT);
             break;
         case ('L'):
             tacho_stop(MOTOR_LEFT);
-            sleep(runtime_msec);
-            tacho_run_forever(MOTOR_LEFT);
             break;
         default:
             printf("Incorrect direction given in function turn(). Valid directions: 'R' or 'L'.");
             return;
     }
+    sleep(runtime_msec);
+    tacho_run_forever(MOTOR_BOTH);
 }
 
 void rotate(char direction, int runtime_msec){
