@@ -27,8 +27,8 @@ int main( void )
     init();
     rotate_left(0.2, 5000);
     rotate_right(0.2, 5000);
-	brick_uninit();
-	printf("dying...\n");
+    brick_uninit();
+    printf("dying...\n");
     return (0);
 }
 
