@@ -51,14 +51,14 @@ int init(){
 }
 
 void rotate_right(float speed, int runtime_msec){
-    tacho_set_speed_sp(MOTOR_C, max_hastighet * -speed);  // Sätter hastigheten på båda motorerna till 20% av maxhastigheten
+    tacho_set_speed_sp(MOTOR_C, max_hastighet * -speed);
     tacho_run_forever(MOTOR_C);
     Sleep(runtime_msec);
     tacho_stop(MOTOR_C);
 }
 
 void rotate_left(float speed, int runtime_msec){
-    tacho_set_speed_sp(MOTOR_C, max_hastighet * speed);  // Sätter hastigheten på båda motorerna till 20% av maxhastigheten
+    tacho_set_speed_sp(MOTOR_C, max_hastighet * speed);
     tacho_run_forever(MOTOR_C);
     Sleep(runtime_msec);
     tacho_stop(MOTOR_C);
