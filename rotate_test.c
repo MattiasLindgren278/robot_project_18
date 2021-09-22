@@ -6,12 +6,12 @@
 
 #define MOTOR_RIGHT    	OUTA
 #define MOTOR_LEFT    	OUTB
-#define MOTOR_C    		OUTC
-#define MOTOR_D    		OUTD
+#define MOTOR_C    	OUTC
+#define MOTOR_D    	OUTD
 #define SENSOR_TOUCH	IN1
-#define SENSOR_2		IN2
-#define SENSOR_3		IN3
-#define SENSOR_4		IN4
+#define SENSOR_2	IN2
+#define SENSOR_3	IN3
+#define SENSOR_4	IN4
 
 #define MOTOR_BOTH     	( MOTOR_LEFT | MOTOR_RIGHT ) /* Bitvis ELLER ger att båda motorerna styrs samtidigt */
 
