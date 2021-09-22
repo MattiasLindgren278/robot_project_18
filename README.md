@@ -7,7 +7,7 @@
 
 ### Contact information
 
-### Gannt chart
+### Gantt chart
 
 ![Ganttschema](https://raw.githubusercontent.com/MattiasLindgren278/robot_project_18/main/PlantUML/GANTT.svg)
 <img src="https://raw.githubusercontent.com/MattiasLindgren278/robot_project_18/main/PlantUML/GANTT.svg">
