@@ -1,5 +1,5 @@
 # robot_project_18
-'''planuml
+@startuml
 Bob -> Alice : hello
 Alice -> Bob : hi
-'''
+@enduml
