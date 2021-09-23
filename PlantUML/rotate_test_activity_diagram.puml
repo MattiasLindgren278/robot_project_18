@@ -2,14 +2,18 @@
 
 |init()|
 start
-if (Om funktion Brick_init() returnerar 1) then (nej)
-:tillbaka;
+if (Om funktion Brick_init() **inte** är **True**) then (ja)
+:return 1;
 stop 
-else (ja)
+else (nej)
     :Print "x Hello!"";
+    floating note right
+        Fel intenderat.
+        If-sats ovan var på en rad.
+    end note
     :Håll upp i 2000 mms;
     if (Är alla motorer inkopplade?) then (nej)
-        :Print "Anlust vänster motor i port C";
+        :Print "Anslut vänster motor i port C";
         :anropa brick_unitit;
         stop
         
