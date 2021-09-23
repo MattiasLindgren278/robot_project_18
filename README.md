@@ -8,6 +8,10 @@
 - Most will be in Swedish :sweden:
 
 <br></Br>
+# Kommer WALL-E kunna bära vår kursbok?
+![Go WALL-E!](https://raw.githubusercontent.com/MattiasLindgren278/robot_project_18/main/PlantUML/video0_1.gif)]
+[I'm on youtube](https://youtu.be/ko8yzUz9CVA)
+<br><br>
 # WBS
 <img src="https://raw.githubusercontent.com/MattiasLindgren278/robot_project_18/main/PlantUML/wbs.svg" width="200">
 
