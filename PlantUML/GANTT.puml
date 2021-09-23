@@ -1,0 +1,101 @@
+@startuml
+language SV
+
+title Ganttschema
+header Robotprogrammeringsprojekt - Grupp 18
+footer Version 0.1
+
+saturday are closed
+sunday are closed
+
+Project starts 2021-09-08
+-- Faser --
+[Definitionsfas] starts 2021-09-08 and lasts 10 days
+[Utforskningsfas] lasts 2 weeks
+[Konststruktion] lasts 1 week
+
+-- Iterationer --
+[Iteration 1] as [I_1] starts 2021-09-17
+[I_1] lasts 1 week
+
+[Iteration 2] as [I_2] starts after [I_1]'s end
+[I_2] lasts 1 week
+
+[Iteration 3] as [I_3] starts after [I_2]'s end
+[I_3] lasts 1 week
+
+[Iteration 4] as [I_4] starts after [I_3]'s end
+[I_4] lasts 1 week
+
+-- Handledning --
+[Handledning 1] as [H_1] happens at 2021-09-09
+[Handledning 2] as [H_2] happens at 2021-09-17
+[Handledning 3] as [H_3] happens at 2021-09-23
+[Handledning 4] as [H_4] happens at 2021-09-30
+[Handledning 5] as [H_5] happens at 2021-10-07
+
+-- Test & Demo--
+[Muntlig presentation] happens at 2021-10-12
+[Praktisk Demo] happens at 2021-10-13
+[Demo] starts at 2021-10-13
+[Demo] lasts 1 day
+note bottom
+    [[https://canvas.kth.se/courses/28714/pages/projektuppgift-lego-robot Examination]]
+end note
+' [Demo] starts after [Praktisk Demo]' starts
+' [Demo] lasts 1 day
+
+-- Uppgifter --
+
+[Inför Handledning] as [IH_1] starts 0 day before [H_1]'s start
+[IH_1] lasts 1 day
+note bottom
+    <&task> [[https://canvas.kth.se/courses/28714/pages/handledning-1 Att förbereda]] 
+    
+end note
+
+[Inför Handledning 2] as [IH_2] starts 5 day before [H_2]'s start
+[IH_2] lasts 1 day
+note bottom
+    [[https://canvas.kth.se/courses/28714/pages/handledning-2 Att förbereda]] 
+    
+end note
+
+[Inför Handledning 3] as [IH_3] starts 5 day before [H_3]'s start
+[IH_3] lasts 1 day
+note bottom
+    [[https://canvas.kth.se/courses/28714/pages/handledning-3 Att förbereda]] 
+    uppgift 3
+    uppgift 5
+    task 1 
+end note
+
+
+[Inför Handledning 4] as [IH_4] starts 5 day before [H_4]'s start
+[IH_4] lasts 1 day
+note bottom
+    [[https://canvas.kth.se/courses/28714/pages/handledning-4 Att förbereda]] 
+    
+end note
+
+[Inför Handledning 5] as [IH_5] starts 5 day before [H_5]'s start
+[IH_5] lasts 1 day
+' [IH_5] links to [[https://canvas.kth.se canvas]]
+note bottom
+    * [[https://canvas.kth.se/courses/28714/pages/handledning-5 Att förbereda]] 
+    
+end note
+
+-- Konstruktion --
+[Konstruktion av Wall-E-design] as [K] starts 2021-09-22
+[K] lasts 3 days
+note bottom
+    Kan W-E bära boken? {Must}
+    Kan W-E släppa boken? {Must}
+    Kan W-E rotera och backa utan att tappa boken? {Must}
+    Kan W-E prata {Want}
+end note
+
+[<I>Ska vi fortsätta med Wall-E-Design?</I>] happens 1 day after [K]'s start
+[Kursrapportinlämning] happens at 2021-10-28
+@enduml
