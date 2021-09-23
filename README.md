@@ -9,14 +9,20 @@
 
 <br></Br>
 # WBS
-<img src="https://raw.githubusercontent.com/MattiasLindgren278/robot_project_18/main/PlantUML/wbs.svg" width="100">
+<img src="https://raw.githubusercontent.com/MattiasLindgren278/robot_project_18/main/PlantUML/wbs.svg" width="200">
 
 <br></Br>
 # Gantt chart
 
-<img src="https://raw.githubusercontent.com/MattiasLindgren278/robot_project_18/main/PlantUML/GANTT.svg" width="100">
+<img src="https://raw.githubusercontent.com/MattiasLindgren278/robot_project_18/main/PlantUML/GANTT.svg" width="150">
+
+<br></br>
+# Activity Diagrams
+## Rotate test
+<img src ="https://raw.githubusercontent.com/MattiasLindgren278/robot_project_18/main/PlantUML/rotate_test_activity_diagram.svg" width="200">
 
 <br></Br>
+
 # Stuff to try and stuff to learn 
 - C
  
