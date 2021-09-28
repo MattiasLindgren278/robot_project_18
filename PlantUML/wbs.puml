@@ -4,10 +4,37 @@
 *** WBS
 *** GANTT
 *** Projektdefintion
+**** Riskanalys {Mattias}
+**** Utbildningplan {Vincent}
+**** Kostnadsplan {Zhonghao}
+**** ......
 ** Konstruktion
-*** Wall-E-Design (Want)
-*** Sensorer 
+*** Wall-E-Design (Want) {Otto, Zhonghao}
+*** Sensorer
+**** Ultraljud
+*** Tippningmekanism {Otto}
 ** Kod
+*** Flowcharts
+**** Program 1
+**** Program 2
+**** Program 3
+**** Program 4
 ** Redovisning
+*** Gemensam projektredovisning
+' note bottom
+' Alla skall hålla den enskilt (7 min)
+' end note 
+**** Ta fram en PPT
+**** Sammanfattningsprotokoll
+
 ** Test
+*** Köra rakt fram
+*** Rotera
+*** Orientera sig 
+*** Släppa bok
+*** Program 1
+*** Program 2
+*** Program 3
+*** Program 4
+*** Återgå till samma plats 
 @endwbs
