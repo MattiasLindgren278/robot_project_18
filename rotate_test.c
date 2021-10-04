@@ -72,16 +72,16 @@ void rotate(char direction, int degrees){
             printf("Rotating right %d degrees\n", degrees);
             tacho_set_speed_sp(MOTOR_LEFT, max_speed * 0.25f);
             tacho_set_speed_sp(MOTOR_RIGHT, max_speed * -0.25f);
-            tacho_set_position_sp(MOTOR_LEFT, 90);
-            tacho_set_position_sp(MOTOR_RIGHT, -90);
+            tacho_set_position_sp(MOTOR_LEFT, degrees);
+            tacho_set_position_sp(MOTOR_RIGHT, -degrees);
             tacho_run_to_rel_pos(MOTOR_BOTH);
             break;
         case('l'):
             printf("Rotating left %d degrees\n", degrees);
             tacho_set_speed_sp(MOTOR_RIGHT, max_speed * 0.25f);
             tacho_set_speed_sp(MOTOR_LEFT, max_speed * -0.25f);
-            tacho_set_position_sp(MOTOR_RIGHT, 90);
-            tacho_set_position_sp(MOTOR_LEFT, -90);
+            tacho_set_position_sp(MOTOR_RIGHT, degrees);
+            tacho_set_position_sp(MOTOR_LEFT, -degrees);
             tacho_run_to_rel_pos(MOTOR_BOTH);
             break;
         default:
