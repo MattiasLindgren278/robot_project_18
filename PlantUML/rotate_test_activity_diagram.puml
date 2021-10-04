@@ -1,0 +1,41 @@
+@startuml
+
+|init()|
+start
+if (Om funktion Brick_init() **inte** är **True**) then (ja)
+:return 1;
+stop 
+else (nej)
+    :Print "x Hello!"";
+    floating note right
+        Fel intenderat.
+        If-sats ovan var på en rad.
+    end note
+    :Håll upp i 2000 mms;
+    if (Är alla motorer inkopplade?) then (nej)
+        :Print "Anslut vänster motor i port C";
+        :anropa brick_unitit;
+        stop
+        
+    else (ja)
+        :Kolla maxhastigen;
+        :Sätt maxhastighet;
+        ' stop
+    ' :Tillbaka till main;
+    '
+    endif 
+|rotate_left(0.2, 5000)|
+    :tacho_set_speed_sp(MOTOR_C, max_hastighet * speed);
+    :tacho_run_forever(MOTOR_C);
+    :Sleep(runtime_msec);
+    :tacho_stop(MOTOR_C);
+|rotate_right(0.2, 5000)|
+    :tacho_set_speed_sp(MOTOR_C, max_hastighet * -speed);
+    :tacho_run_forever(MOTOR_C);
+    :Sleep(runtime_msec);
+    :tacho_stop(MOTOR_C);
+|avslut|
+    :brick_uninit();
+    :printf("dying..."); 
+end
+@enduml

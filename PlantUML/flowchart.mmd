@@ -1,0 +1,56 @@
+flowchart TD
+    subgraph P0 [PROGRAM GEMENSAMT]
+    P01[start] -->W01(while distance to wall is less or greater then 50 cm)
+    W01 -->|TRUE| W01T[Rotate right] -->W01
+    W01 -->|FALSE| W02(while distance to wall is not <= 25 cm)
+    W02 -->|TRUE| W02T[Drive forward] -->W02
+    W02 -->|FALSE| W02Break((Break))
+    end
+
+    P0 -->|Program 1 <br/> Program 3|P13
+    P0 -->|Program 2 <br/> Program 4|P24
+
+    subgraph P13 [PROGRAM 1 & 3]
+    RR[Rotate 90 degrees right]
+    RR--> P13D[Dirve 250]
+    end
+    
+    subgraph P24 [PROGRAM 2 & 4]
+    RL[Rotate 90 degrees left]
+    RL -->P14D[Dirve 250]
+    end
+
+    subgraph PSB [PROGRAM GEMENSAMT]
+    R180[Rotate 180 degrees] --> DB[Drop book]
+    DB -->TE[THE END]
+    end
+
+    subgraph P3 [PROGRAM 3]
+    RL3[Rotate Left]
+    RL3 --> W03(While xxx)
+    W03 -->|TRUE| W3T[Drive forward] -->W03
+    W03 -->|FALSE| W3Break((break))
+    end
+    
+    subgraph P4 [Program 4]
+    RR4[Rotate Right]
+    RR4 --> W04(While xxx)
+    W04 -->|TRUE| W04T[Drive forward] -->W04
+    W04 --->|FALSE| W4Break((Break))
+    end
+ 
+    P13 -->|Program 3|P3
+    P13 -->|Program 1|PSB
+
+    P24 -->|Program 4|P4
+    P24 -->|Program 2|PSB
+
+    P3 -->PSB
+    P4 -->PSB
+
+
+
+%%    A [Hard edge] -->|Link text| B(Round edge)
+%%    B --> C{Decision}
+%%    C -->|One| D[Result one]
+%%    C -->|Two| E[Result two]
