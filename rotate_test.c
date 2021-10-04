@@ -2,64 +2,90 @@
 #include "brick.h"
 #include <unistd.h>
 
-#define Sleep( msec ) usleep(( msec ) * 1000 ) /* Definerar sleep, Sleep(1000)= 1 sekund */
-
 #define MOTOR_RIGHT    	OUTA
 #define MOTOR_LEFT    	OUTB
-#define MOTOR_C    	OUTC
-#define MOTOR_D    	OUTD
 #define SENSOR_TOUCH	IN1
-#define SENSOR_2	IN2
-#define SENSOR_3	IN3
-#define SENSOR_4	IN4
 
-#define MOTOR_BOTH     	( MOTOR_LEFT | MOTOR_RIGHT ) /* Bitvis ELLER ger att båda motorerna styrs samtidigt */
+#define MOTOR_BOTH     	(MOTOR_LEFT | MOTOR_RIGHT)
 
-int max_hastighet;         /* variabel för max hastighet på motorn */
-POOL_T touchSensor;
+int max_speed;
+POOL_T touch_sensor;
 
 int init();
-void rotate_right(float, int);
-void rotate_left(float, int);
+void rotate(char, int);
 
 int main( void )
 {  
-    init();
-    rotate_left(0.2, 5000);
-    rotate_right(0.2, 5000);
-    brick_uninit();
-    printf("dying...\n");
-    return (0);
+    if(!init()){
+        printf("Initialization failed. Shutting down...");
+        sleep_ms(1500);
+        brick_uninit();
+        return 1;
+    }
+
+    touch_sensor = sensor_search(LEGO_EV3_TOUCH);
+	touch_set_mode_touch(touch_sensor);
+
+    rotate('r', 90);
+    rotate('l', 90);
+
+    printf("Press sensor to exit.\n");
+    sleep_ms(100);
+
+    //Shutdown robot by pressing the touch sensor
+	while(!sensor_get_value(0, touch_sensor, 0));
+	brick_uninit();
+	printf("Shutting down...\n");
+    sleep_ms(1500);
+    return 0;
 }
 
 int init(){
+    printf("Initializing...\n");
 
-    if (!brick_init()) return (1); /* Initialiserar EV3-klossen */
-	printf("*** ( EV3 ) Hello! ***\n");
-	Sleep(2000);
-	
-	if (tacho_is_plugged(MOTOR_C, TACHO_TYPE__NONE_)) {  /* TACHO_TYPE__NONE_ = Alla typer av motorer */
-        max_hastighet = tacho_get_max_speed(MOTOR_C, 0);	/* Kollar maxhastigheten som motorn kan ha */
-        tacho_reset(MOTOR_C);
-
-    } else {
-        printf("Anslut vänster motor i port C,\n");
-      	brick_uninit();
-        return (0);  /* Stänger av sig om motorern ej är inkopplad */
+    if (!brick_init()){
+        printf("ERROR: Unable to initialize brick.\n");
+        sleep_ms(100);
+        return 0;
     }
-	
+
+    if (tacho_is_plugged(MOTOR_BOTH, TACHO_TYPE__NONE_)){
+        max_speed = tacho_get_max_speed(MOTOR_BOTH, 0);
+        tacho_reset(MOTOR_BOTH);
+        printf("Initialization successful!\n"
+               "******** Welcome! ********\n");
+        sleep_ms(100);
+        return 1;
+    } 
+    else{
+        brick_uninit();
+        printf("ERROR: No motor connected.\n"
+        "Connect the right motor to port A and the left motor to port B.\n");
+        sleep_ms(100);
+        return 0;
+    }
 }
 
-void rotate_right(float speed, int runtime_msec){
-    tacho_set_speed_sp(MOTOR_C, max_hastighet * -speed);
-    tacho_run_forever(MOTOR_C);
-    Sleep(runtime_msec);
-    tacho_stop(MOTOR_C);
-}
-
-void rotate_left(float speed, int runtime_msec){
-    tacho_set_speed_sp(MOTOR_C, max_hastighet * speed);
-    tacho_run_forever(MOTOR_C);
-    Sleep(runtime_msec);
-    tacho_stop(MOTOR_C);
+void rotate(char direction, int degrees){
+    switch(direction){
+        case('r'):
+            printf("Rotating right %d degrees\n", degrees);
+            tacho_set_speed_sp(MOTOR_LEFT, max_speed * 0.25f);
+            tacho_set_speed_sp(MOTOR_RIGHT, max_speed * -0.25f);
+            tacho_set_position_sp(MOTOR_LEFT, 90);
+            tacho_set_position_sp(MOTOR_RIGHT, -90);
+            tacho_run_to_rel_pos(MOTOR_BOTH);
+            break;
+        case('l'):
+            printf("Rotating left %d degrees\n", degrees);
+            tacho_set_speed_sp(MOTOR_RIGHT, max_speed * 0.25f);
+            tacho_set_speed_so(MOTOR_LEFT, max_speed * -0.25f);
+            tacho_set_position_sp(MOTOR_RIGHT, 90);
+            tacho_set_position_sp(MOTOR_LEFT, -90);
+            tacho_run_to_rel_pos(MOTOR_BOTH);
+            break;
+        default:
+            printf("Parameter direction only accepts argument 'r' or 'l' in function rotate().\n");
+            break;
+    }
 }
