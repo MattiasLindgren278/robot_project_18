@@ -14,7 +14,7 @@ POOL_T touch_sensor;
 int init();
 void rotate(char, int);
 
-int main( void )
+int main(void)
 {  
     if(!init()){
         printf("Initialization failed. Shutting down...");
@@ -27,6 +27,7 @@ int main( void )
 	touch_set_mode_touch(touch_sensor);
 
     rotate('r', 90);
+    sleep_ms(2000);
     rotate('l', 90);
 
     printf("Press sensor to exit.\n");
@@ -50,7 +51,7 @@ int init(){
     }
 
     if (tacho_is_plugged(MOTOR_BOTH, TACHO_TYPE__NONE_)){
-        max_speed = tacho_get_max_speed(MOTOR_BOTH, 0);
+        max_speed = tacho_get_max_speed(MOTOR_LEFT, 0); 
         tacho_reset(MOTOR_BOTH);
         printf("Initialization successful!\n"
                "******** Welcome! ********\n");
@@ -67,25 +68,25 @@ int init(){
 }
 
 void rotate(char direction, int degrees){
+    tacho_set_speed_sp(MOTOR_BOTH, max_speed * 0.2f);
+
     switch(direction){
         case('r'):
             printf("Rotating right %d degrees\n", degrees);
-            tacho_set_speed_sp(MOTOR_LEFT, max_speed * 0.25f);
-            tacho_set_speed_sp(MOTOR_RIGHT, max_speed * -0.25f);
-            tacho_set_position_sp(MOTOR_LEFT, degrees);
-            tacho_set_position_sp(MOTOR_RIGHT, -degrees);
-            tacho_run_to_rel_pos(MOTOR_BOTH);
+            tacho_set_position_sp(MOTOR_LEFT, degrees*2);
+            tacho_set_position_sp(MOTOR_RIGHT, -degrees*2);
             break;
+
         case('l'):
             printf("Rotating left %d degrees\n", degrees);
-            tacho_set_speed_sp(MOTOR_RIGHT, max_speed * 0.25f);
-            tacho_set_speed_sp(MOTOR_LEFT, max_speed * -0.25f);
-            tacho_set_position_sp(MOTOR_RIGHT, degrees);
-            tacho_set_position_sp(MOTOR_LEFT, -degrees);
-            tacho_run_to_rel_pos(MOTOR_BOTH);
+            tacho_set_position_sp(MOTOR_RIGHT, degrees*2);
+            tacho_set_position_sp(MOTOR_LEFT, -degrees*2);
             break;
+
         default:
             printf("Parameter direction only accepts argument 'r' or 'l' in function rotate().\n");
             break;
     }
+
+    tacho_run_to_rel_pos(MOTOR_BOTH);
 }
