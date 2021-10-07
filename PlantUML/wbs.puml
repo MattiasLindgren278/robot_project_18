@@ -22,20 +22,24 @@
 ***** Släppa boken {Mattias}
 ***** Framåt (250 cm) {Vincent}
 ***** Rotation med identifiering av närmaste vägg {Zhonghao}
-***** Köra fram till vägg med avstånd på 30 cm
+***** Köra fram till vägg med avstånd på 30 cm {Vincent}
 **** Kodstruktur
-***** Sammanställa funktion.c 
-***** Header-fil 
-***** Läsbarhet. 
+***** Merge alla funktioner till robot.c {Otto}
+***** Merge alla headers till en robot.h {Otto}
+***** Läsbarhet {Alla}. 
 ****** Kommentarer
 ****** Struktur
 ****** Variabelnamn
 ****** Lagom storlek på funktioner
 **** Program Mains 
-***** Program 1
-***** Program 2
-***** Program 3
-***** Program 4
+***** Program_1 {Zhonghao}
+***** Program_2 {Zhonghao}
+***** Program_3 {Zhonghao}
+***** Program _4 {Zhonghao}
+*** Wants
+**** Köra tillbaka till ursprungsplats
+**** Låta som en robot
+**** Blinka 
 ** Redovisning
 *** Gemensam projektredovisning
 ' note bottom
@@ -44,14 +48,14 @@
 **** Ta fram en PPT
 **** Sammanfattningsprotokoll
 
-** Test
-*** Köra rakt fram
-*** Rotera
-*** Orientera sig 
-*** Släppa bok
-*** Program 1
-*** Program 2
-*** Program 3
-*** Program 4
-*** Återgå till samma plats 
+** Uppföljning, test och avslut
+*** Provköra roboten inför demo.Tryck fast lösa delar {Otto}
+*** Se till att robotens batteri är fullad {Zhonghao}
+*** Demonstrera roboten {Otto}
+*** Sorter upp lego bitarna i robotlådan {Mattias}
+*** Lämna in robotlådan {Mattias}
+*** Skriva egen kursrapport {Alla}
+*** Skriva klart projektdef och se till att alla dokument finns {Vincent}
+*** Göra klart muntliga presentationen {Vincent}
+*** Vem som skrivit klart koden {Alla}
 @endwbs
