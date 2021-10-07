@@ -3,6 +3,7 @@
 ** Dokumentation
 *** WBS
 *** GANTT
+*** Iterationsplanerings modell
 *** Projektdefintion
 **** Riskanalys {Mattias}
 **** Utbildningplan {Vincent}
@@ -15,10 +16,26 @@
 *** Tippningmekanism {Otto}
 ** Kod
 *** Flowcharts
-**** Program 1
-**** Program 2
-**** Program 3
-**** Program 4
+**** Funktioner
+***** init {Otto}
+***** Rotation med x grader {Otto}
+***** Släppa boken {Mattias}
+***** Framåt (250 cm) {Vincent}
+***** Rotation med identifiering av närmaste vägg {Zhonghao}
+***** Köra fram till vägg med avstånd på 30 cm
+**** Kodstruktur
+***** Sammanställa funktion.c 
+***** Header-fil 
+***** Läsbarhet. 
+****** Kommentarer
+****** Struktur
+****** Variabelnamn
+****** Lagom storlek på funktioner
+**** Program Mains 
+***** Program 1
+***** Program 2
+***** Program 3
+***** Program 4
 ** Redovisning
 *** Gemensam projektredovisning
 ' note bottom
