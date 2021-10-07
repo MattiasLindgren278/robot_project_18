@@ -36,7 +36,7 @@ int init(int* max_driving_speed, int* drop_speed){
     if(max_driving_speed)
         *max_driving_speed = tacho_get_max_speed(MOTOR_LEFT, 0);
     if(drop_speed)
-        *drop_speed = tacho_get_max_speed(MOTOR_DROP, 0);
+        *drop_speed = tacho_get_max_speed(MOTOR_DROP, 0) * 0.1f;
 
     // Reset driving and drop motors
     tacho_reset(MOTOR_BOTH);
