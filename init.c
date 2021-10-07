@@ -8,9 +8,6 @@
 #define MOTOR_DROP      OUTC
 #define SENSOR_US       IN3
 
-//int max_driving_speed;  // Max speed of driving motors
-//int drop_speed;         // Max speed of drop motor
-
 int init(int* max_driving_speed, int* drop_speed){
     printf("Initializing...\n");
 
