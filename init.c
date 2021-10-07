@@ -28,7 +28,7 @@ int init(int* max_driving_speed, int* drop_speed){
     if(!(tacho_is_plugged(MOTOR_BOTH, TACHO_TYPE__NONE_) && tacho_is_plugged(MOTOR_DROP, TACHO_TYPE__NONE_) && sensor_is_plugged(SENSOR_US, TACHO_TYPE__NONE_))){
         brick_uninit();
         printf("ERROR: One or more components are not connected. Error called from function init() located in init.c.\n");
-        sleep(100);
+        sleep_ms(100);
         return 0;
     }
     
@@ -45,6 +45,6 @@ int init(int* max_driving_speed, int* drop_speed){
     // Print that initialization was successful and return 1
     printf("Initialization successful!\n"
             "******** Welcome! ********\n");
-    sleep(100);
+    sleep_ms(100);
     return 1;
 }
