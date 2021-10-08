@@ -27,7 +27,7 @@ int main(void)
 
     rotate('r', 360, 0.05);
     sleep_ms(10);
-    while (tacho_get_duty_cycle_sp(MOTOR_RIGHT, 0)){
+    while (tacho_is_running(MOTOR_RIGHT)){
         int curr_value = sensor_get_value0(sensor_us, 0);
 
         if (curr_value < min_value)
@@ -42,7 +42,7 @@ int main(void)
     
     rotate('r', 360, 0.1);
     sleep_ms(10);
-    while (tacho_get_duty_cycle_sp(MOTOR_RIGHT, 0)){
+    while (tacho_is_running(MOTOR_RIGHT)){
         int curr_value = sensor_get_value0(sensor_us, 0);
 
         printf("curr_value: %d", curr_value);
