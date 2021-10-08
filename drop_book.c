@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include "brick.h"
-#include <unistd.h>
+#include "init.h"
 
 #define MOTOR_MEDIUM_TACHO      OUTC
 #define SENSOR_TOUCH            IN2
 
 int drop_speed;
+int max_driving_speed;
 POOL_T touchSensor;
 
-int init();
+//int init();
 void drop();
 
 void drop(){
@@ -34,8 +35,9 @@ void drop(){
 }
 
 int main(void){  
+    
     //Init failed, "dirty" exit
-    if (!init()){
+    if (!init(&max_driving_speed,&drop_speed)){
         printf("Shutting down due to an error...\n");
         sleep_ms(3000);
         return 1;
@@ -62,6 +64,8 @@ int main(void){
     return 0;
 }
 
+
+/*
 int init(){
     printf("Initializing...\n");
 
@@ -86,4 +90,5 @@ int init(){
         sleep_ms(100);
         return 0;
     }
-}
+    
+}*/
