@@ -26,7 +26,7 @@ int main(void)
     us_set_mode_us_dist_cm(sensor_us); // mm och inte cm
 
     rotate('r', 360, 0.05);
-    sleep_ms(10);
+    //sleep_ms(10);
     while (tacho_is_running(MOTOR_RIGHT)){
         int curr_value = sensor_get_value0(sensor_us, 0);
 
@@ -35,13 +35,12 @@ int main(void)
 
         printf("curr_value: %d", curr_value);
         printf("min_value: %d", min_value);
-        sleep_ms(5);
     }
 
 
     
-    rotate('r', 360, 0.1);
-    sleep_ms(10);
+    rotate('r', 360, 0.05);
+    //sleep_ms(10);
     while (tacho_is_running(MOTOR_RIGHT)){
         int curr_value = sensor_get_value0(sensor_us, 0);
 
