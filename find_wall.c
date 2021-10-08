@@ -13,7 +13,7 @@
 int max_driving_speed;
 POOL_T sensor_us;
 
-int init();
+//int init();
 
 int main(void)
 {  
@@ -26,6 +26,7 @@ int main(void)
     us_set_mode_us_dist_cm(sensor_us); // mm och inte cm
 
     rotate('r', 360, 0.05);
+    sleep_ms(10);
     while (tacho_get_duty_cycle_sp(MOTOR_RIGHT, 0)){
         int curr_value = sensor_get_value0(sensor_us, 0);
 
@@ -36,8 +37,11 @@ int main(void)
         printf("min_value: %d", min_value);
         sleep_ms(5);
     }
+
+
     
     rotate('r', 360, 0.1);
+    sleep_ms(10);
     while (tacho_get_duty_cycle_sp(MOTOR_RIGHT, 0)){
         int curr_value = sensor_get_value0(sensor_us, 0);
 
