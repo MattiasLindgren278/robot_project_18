@@ -2,8 +2,8 @@
 #include "brick.h"
 #include "init.h"
 
-#define MOTOR_MEDIUM_TACHO      OUTC
-#define SENSOR_TOUCH            IN2
+#define MOTOR_DROP      OUTC
+#define SENSOR_TOUCH    IN2
 
 int drop_speed;
 int max_driving_speed;
@@ -18,20 +18,20 @@ void drop(){
     * Wait one second
     * Stop medium tacho motor */
     printf("Dropping book\n");
-    tacho_set_speed_sp(MOTOR_MEDIUM_TACHO, drop_speed);
-    tacho_run_forever(MOTOR_MEDIUM_TACHO);
+    tacho_set_speed_sp(MOTOR_DROP, drop_speed);
+    tacho_run_forever(MOTOR_DROP);
     sleep_ms(1000);
-    tacho_stop(MOTOR_MEDIUM_TACHO);
+    tacho_stop(MOTOR_DROP);
 
     /* Set speed to reverse dropping mechanism for medium tacho motor
     * Start the medium tacho motor 
     * Wait one second
     * Stop the medium tacho motor */
     printf("Resetting position\n");
-    tacho_set_speed_sp(MOTOR_MEDIUM_TACHO, drop_speed * -1);
-    tacho_run_forever(MOTOR_MEDIUM_TACHO);
+    tacho_set_speed_sp(MOTOR_DROP, drop_speed * -1);
+    tacho_run_forever(MOTOR_DROP);
     sleep_ms(1000);
-    tacho_stop(MOTOR_MEDIUM_TACHO);
+    tacho_stop(MOTOR_DROP);
 }
 
 int main(void){  
@@ -75,9 +75,9 @@ int init(){
         return 0;
     }
 
-    if (tacho_is_plugged(MOTOR_MEDIUM_TACHO, TACHO_TYPE__NONE_)){
-        drop_speed = tacho_get_max_speed(MOTOR_MEDIUM_TACHO, 0) * 0.1;
-        tacho_reset(MOTOR_MEDIUM_TACHO);
+    if (tacho_is_plugged(MOTOR_DROP, TACHO_TYPE__NONE_)){
+        drop_speed = tacho_get_max_speed(MOTOR_DROP, 0) * 0.1;
+        tacho_reset(MOTOR_DROP);
         printf("Initialization successful!\n"
                "******** Welcome! ********\n");
         sleep_ms(100);
