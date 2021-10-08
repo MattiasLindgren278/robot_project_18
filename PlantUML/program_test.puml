@@ -1,0 +1,46 @@
+'Byt ut split till fork och se om det blev snyggare. Och om man kan då göra det hela bättre. 
+@startuml
+
+' |init()|
+start
+:init; 
+#palegreen:while;
+while (Distance to wall is **not** <math><= 50 </math> cm) is (TRUE)
+' while (distance %not(<d<55>) notto wall is not =< 55 cm)) is (TRUE) 
+  :rotate right;
+endwhile (FALSE)
+:stop;
+#palegreen:while;
+while (Distance to wall is **not** <math> <= 25 </math> cm) is (TRUE)
+    :drive forward;
+endwhile (FALSE)
+fork
+:program 1;
+:rotate 90 degrees right;
+:drive 250 cm forward;
+    fork
+    :program 3;
+    :rotate 90 degrees right;
+    #palegreen:while;
+    while (Distance to wall is **not** <math> <= 25 </math> cm) is (TRUE)
+        :drive forward;
+    endwhile (FALSE)
+    fork again
+    end fork
+fork again
+:program 2;
+:rotate 90 degrees left;
+:drive 250 cm forward;
+    fork
+    :program 4;
+    :rotate 90 degrees left;
+    #palegreen:while;
+    while (Distance to wall is **not** <math> <= 25 </math> cm) is (TRUE)
+        :drive forward;
+    endwhile (FALSE)
+    fork again
+    end fork
+end fork 
+:rotate 180 degrees;
+:drop book;
+@enduml
