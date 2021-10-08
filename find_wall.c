@@ -31,15 +31,23 @@ int main(void)
 
         if (curr_value < min_value)
             min_value = curr_value;
-            sleep_ms(5);
+
+        printf("curr_value: %d", curr_value);
+        printf("min_value: %d", min_value);
+        sleep_ms(5);
     }
     
     rotate('r', 360, 0.1);
     while (tacho_get_duty_cycle_sp(MOTOR_RIGHT, 0)){
         int curr_value = sensor_get_value0(sensor_us, 0);
 
-        if (curr_value <= min_value)
+        printf("curr_value: %d", curr_value);
+        printf("min_value: %d", min_value);
+
+        if (curr_value <= min_value){
             tacho_stop(MOTOR_BOTH);
+            printf("Stopping");
+        }
     }
 
     sleep_ms(3000);
