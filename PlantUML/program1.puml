@@ -1,0 +1,45 @@
+@startuml
+
+' |init()|
+start
+:init; 
+#palegreen:while;
+while (Distance to wall is **not** <math><= 50 </math> cm) is (TRUE)
+' while (distance %not(<d<55>) notto wall is not =< 55 cm)) is (TRUE) 
+  :rotate right;
+endwhile (FALSE)
+:stop;
+#palegreen:while;
+while (Distance to wall is **not** <math> <= 25 </math> cm) is (TRUE)
+    :drive forward;
+endwhile (FALSE)
+split
+:program 1;
+:rotate 90 degrees right;
+:drive 250 cm forward;
+split again
+:program 2;
+:rotate 90 degrees left;
+:drive 250 cm forward;
+split again
+:program 3;
+:rotate 90 degrees right;
+:drive 250 cm forward;
+:rotate 90 degrees right;
+#palegreen:while;
+while (Distance to wall is **not** <math> <= 25 </math> cm) is (TRUE)
+    :drive forward;
+endwhile (FALSE)
+split again
+:program 4;
+:rotate 0+ degrees left;
+:drive 250 cm forward;
+:rotate 90 degrees left;
+#palegreen:while;
+while (Distance to wall is **not** <math> <= 25 </math> cm) is (TRUE)
+    :drive forward;
+endwhile (FALSE)
+end split
+:rotate 180 degrees;
+:drop book;
+@enduml
