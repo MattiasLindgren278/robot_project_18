@@ -25,7 +25,7 @@ int main(void)
     sensor_us = sensor_search(LEGO_EV3_US);
     us_set_mode_us_dist_cm(sensor_us); // mm och inte cm
 
-    rotate('r', 360, 0.05);
+    rotate('r', 360, 0.08);
     //sleep_ms(10);
     while (tacho_is_running(MOTOR_RIGHT)){
         int curr_value = sensor_get_value0(sensor_us, 0);
@@ -33,24 +33,22 @@ int main(void)
         if (curr_value < min_value)
             min_value = curr_value;
 
-        printf("curr_value: %d", curr_value);
-        printf("min_value: %d", min_value);
+        printf("curr_value: %d\n", curr_value);
+        printf("min_value: %d\n", min_value);
     }
 
 
     
-    rotate('r', 360, 0.05);
+    rotate('r', 360, 0.08);
     //sleep_ms(10);
     while (tacho_is_running(MOTOR_RIGHT)){
         int curr_value = sensor_get_value0(sensor_us, 0);
 
-        printf("curr_value: %d", curr_value);
-        printf("min_value: %d", min_value);
+        printf("curr_value: %d\n", curr_value);
+        printf("min_value: %d\n", min_value);
 
-        if (curr_value <= min_value){
+        if (curr_value <= min_value)
             tacho_stop(MOTOR_BOTH);
-            printf("Stopping");
-        }
     }
 
     sleep_ms(3000);
