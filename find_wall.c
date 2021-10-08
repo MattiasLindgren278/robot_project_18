@@ -25,7 +25,7 @@ int main(void)
     sensor_us = sensor_search(LEGO_EV3_US);
     us_set_mode_us_dist_cm(sensor_us); // mm och inte cm
 
-    rotate('r', 360, 0.15);
+    rotate('r', 360, 0.18);
     //sleep_ms(10);
     while (tacho_is_running(MOTOR_RIGHT)){
         int curr_value = sensor_get_value0(sensor_us, 0);
@@ -39,7 +39,7 @@ int main(void)
 
 
     
-    rotate('r', 360, 0.15);
+    rotate('r', 360, 0.18);
     //sleep_ms(10);
     while (tacho_is_running(MOTOR_RIGHT)){
         int curr_value = sensor_get_value0(sensor_us, 0);
