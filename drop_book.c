@@ -32,33 +32,3 @@ void drop(){
     sleep_ms(1000);
     tacho_stop(MOTOR_DROP);
 }
-
-int main(void){  
-    
-    //Init failed, "dirty" exit
-    if (!init(&max_driving_speed,&drop_speed)){
-        printf("Shutting down due to an error...\n");
-        sleep_ms(3000);
-        return 1;
-    }
-
-    touchSensor = sensor_search(LEGO_EV3_TOUCH);
-	touch_set_mode_touch(touchSensor);
-
-    printf("Press sensor to begin routine.\n");
-    sleep_ms(100);
-    while(!sensor_get_value(0, touchSensor, 0));
-
-    //The routine
-    drop();
-
-    printf("Routine done. Press sensor to exit...\n");
-    sleep_ms(100);
-
-    //Shutdown robot by pressing the touch sensor
-	while(!sensor_get_value(0, touchSensor, 0));
-	brick_uninit();
-	printf("Shutting down...\n");
-    sleep_ms(1500);
-    return 0;
-}
