@@ -10,6 +10,8 @@ int max_driving_speed;
 void drop_book();
 
 void drop_book(){
+    drop_speed = tacho_get_max_speed(MOTOR_DROP, 0) * 0.1; //Set drop_speeds speed
+
     /* Set drop speed for motor drop
     * Start motor drop
     * Wait one second
