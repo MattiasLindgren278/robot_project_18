@@ -12,6 +12,8 @@ POOL_T touchSensor;
 void drop();
 
 void drop(){
+drop_speed = tacho_get_max_speed(MOTOR_DROP, 0) * 0.1f;
+    
     /* Set drop speed for medium tacho motor
     * Start medium tacho motor 
     * Wait one second
