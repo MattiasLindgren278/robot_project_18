@@ -9,7 +9,6 @@ int drop_speed;
 int max_driving_speed;
 POOL_T touchSensor;
 
-//int init();
 void drop();
 
 void drop(){
@@ -63,32 +62,3 @@ int main(void){
     sleep_ms(1500);
     return 0;
 }
-
-
-/*
-int init(){
-    printf("Initializing...\n");
-
-    if (!brick_init()){
-        printf("ERROR: Unable to initialize brick.\n");
-        sleep_ms(100);
-        return 0;
-    }
-
-    if (tacho_is_plugged(MOTOR_DROP, TACHO_TYPE__NONE_)){
-        drop_speed = tacho_get_max_speed(MOTOR_DROP, 0) * 0.1;
-        tacho_reset(MOTOR_DROP);
-        printf("Initialization successful!\n"
-               "******** Welcome! ********\n");
-        sleep_ms(100);
-        return 1;
-    } 
-    else{
-        brick_uninit();
-        printf("ERROR: No motor connected.\n"
-        "Connect the drop motor to port C.\n");
-        sleep_ms(100);
-        return 0;
-    }
-    
-}*/
