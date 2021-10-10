@@ -16,7 +16,7 @@
 int max_hastighet;         /* variabel för max hastighet på motorn */
 POOL_T usSensor;
 
-void from_wall(int distance_mm, float speed int max_driving_speed){
+void from_wall(int distance_mm, float speed, int max_driving_speed){
 
     int distance = distance_mm;
     usSensor = sensor_search(LEGO_EV3_US);  // finns även fler som börjar på US... in och cm. 

@@ -17,18 +17,19 @@
 POOL_T usSensor;
 
 
-void drive(float distance_mm, float speed, int max_driving_speed){
+void drive(int distance_mm, float speed){
 
     usSensor = sensor_search(LEGO_EV3_US);          // finns även fler som börjar på US... in och cm. 
     
     us_set_mode_us_dist_cm(usSensor);               // mm och inte cm
-    
-    float   drive_to_pos = PULS_PER_CM * distance_mm;  //Antalet puls roboten ska köra
+    //int   drive_to_pos = PULS_PER_CM * distance_mm;  //Antalet puls roboten ska köra
 
-    drive_to_pos = (int)drive_to_pos;               //Byter datatyp från int till float
+    //drive_to_pos = (int)drive_to_pos;               //Byter datatyp från int till float
 
-tacho_set_speed_sp(MOTOR_BOTH, max_driving_speed * speed); // Helst 0.5
-tacho_set_position(MOTOR_BOTH, 0);                  //sätter start position till 0
-tacho_set_position_sp(MOTOR_BOTH, drive_to_pos);    // sätter antalet pulsar den ska köra 
-tacho_run_to_abs_pos(MOTOR_BOTH);                   // kör motorerna position + position_sp 
+tacho_set_speed_sp(MOTOR_BOTH, tacho_get_max_speed(MOTOR_LEFT, 0) * speed); // Helst 0.5
+tacho_set_position(MOTOR_RIGHT, 0);                  //sätter start position till 0
+tacho_set_position(MOTOR_LEFT, 0);                  //sätter start position till 0
+tacho_set_position_sp(MOTOR_RIGHT, distance_mm * PULS_PER_CM);    // sätter antalet pulsar den ska köra 
+tacho_set_position_sp(MOTOR_LEFT, distance_mm * PULS_PER_CM);    // sätter antalet pulsar den ska köra 
+tacho_run_to_rel_pos(MOTOR_BOTH);                   // kör motorerna position + position_sp 
 }
