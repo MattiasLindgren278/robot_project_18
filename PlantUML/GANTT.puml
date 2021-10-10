@@ -34,16 +34,6 @@ Project starts 2021-09-08
 [Handledning 4] as [H_4] happens at 2021-09-30
 [Handledning 5] as [H_5] happens at 2021-10-07
 
--- Test & Demo--
-[Muntlig presentation] happens at 2021-10-12
-[Praktisk Demo] happens at 2021-10-13
-[Demo] starts at 2021-10-13
-[Demo] lasts 1 day
-note bottom
-    [[https://canvas.kth.se/courses/28714/pages/projektuppgift-lego-robot Examination]]
-end note
-' [Demo] starts after [Praktisk Demo]' starts
-' [Demo] lasts 1 day
 
 -- Uppgifter --
 
@@ -65,9 +55,6 @@ end note
 [IH_3] lasts 1 day
 note bottom
     [[https://canvas.kth.se/courses/28714/pages/handledning-3 Att förbereda]] 
-    uppgift 3
-    uppgift 5
-    task 1 
 end note
 
 
@@ -75,16 +62,16 @@ end note
 [IH_4] lasts 1 day
 note bottom
     [[https://canvas.kth.se/courses/28714/pages/handledning-4 Att förbereda]] 
-    
 end note
 
 [Inför Handledning 5] as [IH_5] starts 5 day before [H_5]'s start
 [IH_5] lasts 1 day
 ' [IH_5] links to [[https://canvas.kth.se canvas]]
 note bottom
-    * [[https://canvas.kth.se/courses/28714/pages/handledning-5 Att förbereda]] 
-    
+    [[https://canvas.kth.se/courses/28714/pages/handledning-5 Att förbereda]] 
 end note
+
+[Task 1 {Vincent}] starts 2021-09-27 and lasts 5 days
 
 -- Konstruktion --
 [Konstruktion av Wall-E-design] as [K] starts 2021-09-22
@@ -98,4 +85,16 @@ end note
 
 [<I>Ska vi fortsätta med Wall-E-Design?</I>] happens 1 day after [K]'s start
 [Kursrapportinlämning] happens at 2021-10-28
+
+
+-- Test & Demo--
+[Muntlig presentation] happens at 2021-10-12
+[Praktisk Demo] happens at 2021-10-13
+[Demo] starts at 2021-10-13
+[Demo] lasts 1 day
+note bottom
+    [[https://canvas.kth.se/courses/28714/pages/projektuppgift-lego-robot Examination]]
+end note
+' [Demo] starts after [Praktisk Demo]' starts
+' [Demo] lasts 1 day
 @enduml
