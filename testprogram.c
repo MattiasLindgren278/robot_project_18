@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "brick.h"
 #include "init.h"
-#include "to_wall.h"
+#include "from_wall.h"
 #include "drive.h"
 
 #define sleep( msec ) usleep(( msec ) * 1000 ) /* Definerar sleep, Sleep(1000)= 1 sekund */
@@ -24,7 +24,7 @@ int main(void){
     if(!init(&max_driving_speed, 0)){
         return 1;
 }
-    drive(2500, 0.5, max_driving_speed);
-    from_wall(300, 0.5);
+    drive(2500, 0.5);
+    from_wall(300, 0.5, max_driving_speed);
     return 0;
 }
