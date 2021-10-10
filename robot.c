@@ -124,11 +124,11 @@ void find_wall(){
             min_dist = curr_dist;
     }
 
-    rotate('r', 360, 0.1);
+    rotate('l', 360, 0.1);
     while (tacho_is_running(MOTOR_RIGHT)){
         int curr_dist = sensor_get_value0(sensor_us, 0);
 
-        if (curr_dist <= min_dist + 10)
+        if (curr_dist <= min_dist + 20)
             tacho_stop(MOTOR_BOTH);
     }
 }
@@ -159,8 +159,10 @@ void to_wall(int distance, float speed){
 
     tacho_run_forever(MOTOR_BOTH);
     while (tacho_is_running(MOTOR_BOTH)){
-        if(sensor_get_value0(sensor_us, 0) < distance)
+        if(sensor_get_value0(sensor_us, 0) < distance){
             sleep_ms(2000);
+            break;
+        }
     }
 
     printf("Stopping\n");

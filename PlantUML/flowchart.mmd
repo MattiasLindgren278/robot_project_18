@@ -1,6 +1,7 @@
 flowchart TD
     subgraph P0 [PROGRAM GEMENSAMT]
-    P01[start] -->W01(while distance to wall is less or greater then 50 cm)
+    P01[start] -->FW[Find wall]
+    FW -->W01(while distance to wall is less or greater then 50 cm)
     W01 -->|TRUE| W01T[Rotate right] -->W01
     W01 -->|FALSE| W02(while distance to wall is not <= 25 cm)
     W02 -->|TRUE| W02T[Drive forward] -->W02
