@@ -25,6 +25,6 @@ int main(void){
         return 1;
 }
     drive(2500, 0.5);
-    from_wall(300, 0.5, max_driving_speed);
+    from_wall(300, 0.5);
     return 0;
 }
