@@ -37,7 +37,7 @@ int init(){
         return 0;
     }
     
-    // Set maximum speed of driving and drop motors if the are given arguments
+    // Set maximum speed of driving and drop motors
     max_driving_speed = tacho_get_max_speed(MOTOR_LEFT, 0);
     drop_speed = tacho_get_max_speed(MOTOR_DROP, 0) * 0.1f;
 
