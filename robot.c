@@ -41,6 +41,10 @@ int init(){
     max_driving_speed = tacho_get_max_speed(MOTOR_LEFT, 0);
     drop_speed = tacho_get_max_speed(MOTOR_DROP, 0) * 0.1f;
 
+    // Find ultrasonic sensor and set distance mode to millimeters
+    sensor_us = sensor_search(LEGO_EV3_US);
+    us_set_mode_us_dist_cm(sensor_us);
+
     // Reset driving and drop motors
     tacho_reset(MOTOR_BOTH);
     tacho_reset(MOTOR_DROP);
@@ -112,9 +116,6 @@ void drop(){
 void find_wall(){
     int min_dist = 2500;
 
-    sensor_us = sensor_search(LEGO_EV3_US);
-    us_set_mode_us_dist_cm(sensor_us);
-
     rotate('r', 360, 0.1);
     while (tacho_is_running(MOTOR_RIGHT)){
         int curr_dist = sensor_get_value0(sensor_us, 0);
@@ -144,13 +145,23 @@ void drive(int distance, float speed){
 }
 
 void from_wall(int distance, float speed){
-    sensor_us = sensor_search(LEGO_EV3_US);  // finns även fler som börjar på US... in och cm. 
-    us_set_mode_us_dist_cm(sensor_us);       // mm och inte cm
-
     tacho_set_speed_sp(MOTOR_BOTH, max_driving_speed * -speed);
 
     tacho_run_forever(MOTOR_BOTH);
     while (sensor_get_value0(sensor_us, 0) < distance);
+
+    printf("Stopping\n");
+    tacho_stop(MOTOR_BOTH);
+}
+
+void to_wall(int distance, float speed){
+    tacho_set_speed_sp(MOTOR_BOTH, max_driving_speed * speed);  // Set speed for both motors
+
+    tacho_run_forever(MOTOR_BOTH);
+    while (tacho_is_running(MOTOR_BOTH)){
+        if(sensor_get_value0(sensor_us, 0) < distance)
+            sleep_ms(2000);
+    }
 
     printf("Stopping\n");
     tacho_stop(MOTOR_BOTH);

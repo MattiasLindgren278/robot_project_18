@@ -44,3 +44,13 @@ extern void drive(int distance, float speed);
  * \return  N/A  
  */
 extern void from_wall(int distance, float speed);
+
+/** 
+ * \author  Vincent Ferrigan, email:ferrigan@kth.se
+ * \brief   Drive towards a wall.
+ * \param   distance(int)   Approximate distance to the wall in millimeters.
+ *                          When this distance is reached, the robot will drive 2 more seconds to ensure correct positioning.
+ * \param   speed(float)    How fast the robot will drive (0 - 1).
+ * \return  N/A
+ */
+extern void to_wall(int distance, float speed);
