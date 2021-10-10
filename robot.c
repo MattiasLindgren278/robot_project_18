@@ -9,6 +9,7 @@
 #define SENSOR_US       IN3
 
 #define ROTATION_CORRECTION  1.83f
+#define PULSE_PER_MM 2.134f
 
 int max_driving_speed;
 int drop_speed;
@@ -37,10 +38,8 @@ int init(){
     }
     
     // Set maximum speed of driving and drop motors if the are given arguments
-    if(max_driving_speed)
-        max_driving_speed = tacho_get_max_speed(MOTOR_LEFT, 0);
-    if(drop_speed)
-        drop_speed = tacho_get_max_speed(MOTOR_DROP, 0) * 0.1f;
+    max_driving_speed = tacho_get_max_speed(MOTOR_LEFT, 0);
+    drop_speed = tacho_get_max_speed(MOTOR_DROP, 0) * 0.1f;
 
     // Reset driving and drop motors
     tacho_reset(MOTOR_BOTH);
@@ -84,11 +83,11 @@ void rotate(char direction, int degrees, float speed){
             return;
     }
     tacho_run_to_rel_pos(MOTOR_BOTH);   // Run the motors to the newly set positions
+
+    while(tacho_is_running(MOTOR_BOTH));    // Halt the program until the rotation is finished
 }
 
 void drop(){
-    drop_speed = tacho_get_max_speed(MOTOR_DROP, 0) * 0.1f; //Set speed for drop_speed
-    
     /* Set drop speed for motor_drop
      * Start motor_drop
      * Wait one second
@@ -110,7 +109,7 @@ void drop(){
     tacho_stop(MOTOR_DROP);
 }
 
-find_wall(){
+void find_wall(){
     int min_dist = 2500;
 
     sensor_us = sensor_search(LEGO_EV3_US);
@@ -128,10 +127,31 @@ find_wall(){
     while (tacho_is_running(MOTOR_RIGHT)){
         int curr_dist = sensor_get_value0(sensor_us, 0);
 
-        //printf("curr_value: %d\n", curr_value);
-        //printf("min_value: %d\n", min_value);
-
-        if (curr_dist <= min_dist + 5)
+        if (curr_dist <= min_dist + 10)
             tacho_stop(MOTOR_BOTH);
     }
+}
+
+void drive(int distance, float speed){
+    tacho_set_speed_sp(MOTOR_BOTH, max_driving_speed * speed); // Helst 0.5
+
+    tacho_set_position_sp(MOTOR_RIGHT, distance * PULSE_PER_MM);    // sätter antalet pulsar den ska köra
+    tacho_set_position_sp(MOTOR_LEFT, distance * PULSE_PER_MM);    // sätter antalet pulsar den ska köra
+
+    tacho_run_to_rel_pos(MOTOR_BOTH);                   // kör motorerna position + position_sp
+
+    while(tacho_is_running(MOTOR_BOTH));
+}
+
+void from_wall(int distance, float speed){
+    sensor_us = sensor_search(LEGO_EV3_US);  // finns även fler som börjar på US... in och cm. 
+    us_set_mode_us_dist_cm(sensor_us);       // mm och inte cm
+
+    tacho_set_speed_sp(MOTOR_BOTH, max_driving_speed * -speed);
+
+    tacho_run_forever(MOTOR_BOTH);
+    while (sensor_get_value0(sensor_us, 0) < distance);
+
+    printf("Stopping\n");
+    tacho_stop(MOTOR_BOTH);
 }
