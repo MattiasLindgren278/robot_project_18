@@ -8,9 +8,9 @@
 #define MOTOR_DROP      OUTC
 #define SENSOR_US       IN3
 
-#define ROTATION_CORRECTION  1.83f
+#define ROTATION_CORRECTION  1.80f
 #define PULSE_PER_MM 2.134f
-
+#define SENSOR_US_MARGIN 5
 int max_driving_speed;
 int drop_speed;
 
@@ -88,7 +88,7 @@ void rotate(char direction, int degrees, float speed){
     }
     tacho_run_to_rel_pos(MOTOR_BOTH);   // Run the motors to the newly set positions
 
-    while(tacho_is_running(MOTOR_BOTH));    // Halt the program until the rotation is finished
+    //while(tacho_is_running(MOTOR_BOTH));    // Halt the program until the rotation is finished
 }
 
 void drop(){
@@ -117,19 +117,27 @@ void find_wall(){
     int min_dist = 2500;
 
     rotate('r', 360, 0.1);
+    sleep_ms(1);
     while (tacho_is_running(MOTOR_RIGHT)){
         int curr_dist = sensor_get_value0(sensor_us, 0);
+        sleep_ms(1);
 
-        if (curr_dist < min_dist)
+        if (curr_dist < min_dist){
             min_dist = curr_dist;
+            printf("min dist: %d\n", min_dist);
+        }
     }
 
     rotate('l', 360, 0.1);
-    while (tacho_is_running(MOTOR_RIGHT)){
+    sleep_ms(1);
+    while (tacho_is_running(MOTOR_LEFT)){
         int curr_dist = sensor_get_value0(sensor_us, 0);
+        sleep_ms(1);
+        printf("curr dist: %d\n", curr_dist);
 
-        if (curr_dist <= min_dist + 5)
+        if (curr_dist <= (min_dist + SENSOR_US_MARGIN)){
             tacho_stop(MOTOR_BOTH);
+        }
     }
 }
 
