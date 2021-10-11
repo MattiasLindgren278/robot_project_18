@@ -35,6 +35,12 @@ int main(void){
     //while (tacho_is_running(MOTOR_BOTH));
     drive(2500, 0.5);
     //while (tacho_is_running(MOTOR_BOTH));
+    rotate('r', 90, 0.5);
+    //while (tacho_is_running(MOTOR_BOTH));
+    to_wall(300, 0.5);
+    while (tacho_is_running(MOTOR_BOTH));
+    from_wall(300, 0.5);
+    //while (tacho_is_running(MOTOR_BOTH));
     rotate('l', 180, 0.5);
     //while (tacho_is_running(MOTOR_BOTH));
     drop();

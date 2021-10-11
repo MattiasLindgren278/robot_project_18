@@ -128,7 +128,7 @@ void find_wall(){
     while (tacho_is_running(MOTOR_RIGHT)){
         int curr_dist = sensor_get_value0(sensor_us, 0);
 
-        if (curr_dist <= min_dist + 20)
+        if (curr_dist <= min_dist + 5)
             tacho_stop(MOTOR_BOTH);
     }
 }
