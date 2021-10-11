@@ -1,19 +1,20 @@
 /**
  * \author  Otto Heile, email: ottoeh@kth.se
  * \brief   Initialize the brick and check that all necessary components are connected.
- * \return  int: Whether or not the initialization is successful (1 or 0).
+ * \return  int: Whether the initialization is successful (1 or 0).
  */
 extern int init();
 
 /**
  * \author  Otto Heile, email: ottoeh@kth.se
- *  \brief  Rotate the robot.
- *  \param  direction(char)     Which direction the robot will rotate ('r' or 'l').
- *  \param  degrees(int)        How much the robot will rotate.
- *  \param  speed(float)        How fast the robot will rotate (0 - 1).
- *  \return N/A
+ * \brief   Rotate the robot.
+ * \param   direction(char)     Which direction the robot will rotate ('r' or 'l').
+ * \param   degrees(int)        How much the robot will rotate.
+ * \param   speed(float)        How fast the robot will rotate (0 - 1).
+ * \param   halt(int)           Whether the function should halt until the rotation is finished (1 or 0).
+ * \return  N/A
  */
-extern void rotate(char direction, int degrees, float speed);
+extern void rotate(char direction, int degrees, float speed, int halt);
 
 /**
  * \author  Mattias Lindgren Swenne, email: mattls@kth.se

@@ -56,7 +56,7 @@ int init(){
     return 1;
 }
 
-void rotate(char direction, int degrees, float speed){
+void rotate(char direction, int degrees, float speed, int halt){
     tacho_set_speed_sp(MOTOR_BOTH, tacho_get_max_speed(MOTOR_LEFT, 0) * speed);  // Set speed for both motors
 
     switch(direction){
@@ -88,7 +88,9 @@ void rotate(char direction, int degrees, float speed){
     }
     tacho_run_to_rel_pos(MOTOR_BOTH);   // Run the motors to the newly set positions
 
-    //while(tacho_is_running(MOTOR_BOTH));    // Halt the program until the rotation is finished
+    // Halt the program until the rotation is finished if halt is given
+    if(halt)
+        while(tacho_is_running(MOTOR_BOTH));
 }
 
 void drop(){
@@ -116,7 +118,7 @@ void drop(){
 void find_wall(){
     int min_dist = 2500;
 
-    rotate('r', 360, 0.1);
+    rotate('r', 360, 0.1, 0);
     sleep_ms(1);
     while (tacho_is_running(MOTOR_RIGHT)){
         int curr_dist = sensor_get_value0(sensor_us, 0);
@@ -128,7 +130,7 @@ void find_wall(){
         }
     }
 
-    rotate('l', 360, 0.1);
+    rotate('l', 360, 0.1, 0);
     sleep_ms(1);
     while (tacho_is_running(MOTOR_LEFT)){
         int curr_dist = sensor_get_value0(sensor_us, 0);
