@@ -26,17 +26,11 @@ int main(void){
         return 1;
 }
     find_wall();
-    while (tacho_is_running(MOTOR_BOTH));
     to_wall(70, 0.3);
-    while (tacho_is_running(MOTOR_BOTH));
     from_wall(300, 0.3);
-    while (tacho_is_running(MOTOR_BOTH));
-    rotate('r', 90, 0.3); 
-    while (tacho_is_running(MOTOR_BOTH));
+    rotate('r', 90, 0.1, 1); 
     drive(2500, 0.3);
-    while (tacho_is_running(MOTOR_BOTH));
-    rotate('l', 180, 0.3);
-    while (tacho_is_running(MOTOR_BOTH));
+    rotate('l', 180, 0.3, 1);
     drop();
 
     return 0;

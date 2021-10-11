@@ -8,9 +8,10 @@
 #define MOTOR_DROP      OUTC
 #define SENSOR_US       IN3
 
-#define ROTATION_CORRECTION  1.80f
-#define PULSE_PER_MM 2.134f
+#define ROTATION_CORRECTION  2.05f
+#define PULSE_PER_MM 1.9f
 #define SENSOR_US_MARGIN 5
+#define DRIVING_CORRECTION 0.9995f
 int max_driving_speed;
 int drop_speed;
 
@@ -89,8 +90,9 @@ void rotate(char direction, int degrees, float speed, int halt){
     tacho_run_to_rel_pos(MOTOR_BOTH);   // Run the motors to the newly set positions
 
     // Halt the program until the rotation is finished if halt is given
-    if(halt)
+    if(halt){
         while(tacho_is_running(MOTOR_BOTH));
+    }
 }
 
 void drop(){
@@ -144,7 +146,8 @@ void find_wall(){
 }
 
 void drive(int distance, float speed){
-    tacho_set_speed_sp(MOTOR_BOTH, max_driving_speed * speed); // Helst 0.5
+    tacho_set_speed_sp(MOTOR_RIGHT, max_driving_speed * speed * DRIVING_CORRECTION); // Helst 0.5
+    tacho_set_speed_sp(MOTOR_LEFT, max_driving_speed * speed); // Helst 0.5
 
     tacho_set_position_sp(MOTOR_RIGHT, distance * PULSE_PER_MM);    // sätter antalet pulsar den ska köra
     tacho_set_position_sp(MOTOR_LEFT, distance * PULSE_PER_MM);    // sätter antalet pulsar den ska köra
