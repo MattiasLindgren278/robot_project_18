@@ -1,8 +1,3 @@
-/**
- * Project group
- * Course: Tja
-**/
-
 #include <stdio.h>
 #include "brick.h"
 #include "robot.h"
@@ -25,21 +20,7 @@ int main(void){
     if(!init(&max_driving_speed, 0)){
         return 1;
 }
-    find_wall();
-    to_wall(70, 0.3);
-    from_wall(300, 0.3);
     rotate('r', 90, 0.1, 1); 
-    drive(2500, 0.3);
-    rotate('r', 90, 0.1, 1);
-    to_wall(70, 0.3);
-    from_wall(300, 0.3);
-    rotate('l', 180, 0.1, 1);
-    drive(50, 0.3);
-    drop();
-    to_wall(70, 0.3);
-    from_wall(300, 0.3);
-    rotate('l', 90, 0.1, 1);
-    drive(2500, 0.3);
 
     return 0;
 }

@@ -30,8 +30,9 @@ int main(void){
     from_wall(300, 0.3);
     rotate('r', 90, 0.1, 1); 
     drive(2500, 0.3);
-    rotate('l', 180, 0.3, 1);
+    rotate('l', 180, 0.1, 1);
     drop();
+    drive(2500, 0.3);
 
     return 0;
 }
