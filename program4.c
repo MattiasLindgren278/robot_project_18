@@ -34,7 +34,7 @@ int main(void){
     to_wall(70, 0.3);
     from_wall(700, 0.3);
     rotate('r', 90, 0.1, 1);
-    drive(2500), 0.3);
+    drive(2500, 0.3);
     
     find_wall();
     to_wall(70, 0.3);

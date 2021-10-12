@@ -28,9 +28,6 @@ int main(void){
     drop();
     rotate('r', 90, 0.1, 1);
 
-    //drive(DROP_MARGIN, 0.3);
-    //find_wall();
-    //rotate('l', 90, 0.1, 1);
     drive(2500, 0.3);
 
 
