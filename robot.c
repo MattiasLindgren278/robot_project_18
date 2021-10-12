@@ -9,7 +9,7 @@
 #define SENSOR_US       IN3
 
 #define ROTATION_CORRECTION  2.14f
-#define PULSE_PER_MM 1.9f
+#define PULSE_PER_MM 2.13f
 #define SENSOR_US_MARGIN 10
 #define DRIVING_CORRECTION 0.995f
 int max_driving_speed;
