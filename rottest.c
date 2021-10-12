@@ -21,6 +21,13 @@ int main(void){
         return 1;
 }
     rotate('r', 90, 0.1, 1); 
+    sleep_ms(5000);
+    rotate('l', 90, 0.1, 1); 
+    sleep_ms(5000);
+
+    rotate('r', 180, 0.1, 1); 
+    sleep_ms(5000);
+    rotate('l', 180, 0.1, 1); 
 
     return 0;
 }

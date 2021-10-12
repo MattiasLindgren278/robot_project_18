@@ -8,10 +8,10 @@
 #define MOTOR_DROP      OUTC
 #define SENSOR_US       IN3
 
-#define ROTATION_CORRECTION  2.05f
+#define ROTATION_CORRECTION  2.14f
 #define PULSE_PER_MM 1.9f
-#define SENSOR_US_MARGIN 5
-#define DRIVING_CORRECTION 0.9995f
+#define SENSOR_US_MARGIN 10
+#define DRIVING_CORRECTION 0.995f
 int max_driving_speed;
 int drop_speed;
 
@@ -58,7 +58,7 @@ int init(){
 }
 
 void rotate(char direction, int degrees, float speed, int halt){
-    tacho_set_speed_sp(MOTOR_BOTH, tacho_get_max_speed(MOTOR_LEFT, 0) * speed);  // Set speed for both motors
+    tacho_set_speed_sp(MOTOR_BOTH, (max_driving_speed) * speed);  // Set speed for both motors
 
     switch(direction){
         /* Set a new position for both motors
