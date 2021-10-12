@@ -1,6 +1,8 @@
 /**
- * Project group
- * Course:
+ * Project group 18
+ * Course: II1300, HT21-1, Ingenjörsmetodik
+ * 
+ * \author Vincent Ferrigan, email: ferrigan@kth.se
 **/
 
 #include <stdio.h>

@@ -8,10 +8,10 @@
 #define MOTOR_DROP      OUTC
 #define SENSOR_US       IN3
 
-#define ROTATION_CORRECTION  3.97f
-#define PULSE_PER_MM 2.74f
-#define SENSOR_US_MARGIN 20
-#define DRIVING_CORRECTION 0.9955f
+#define ROTATION_CORRECTION  2.05f
+#define PULSE_PER_MM 1.9f
+#define SENSOR_US_MARGIN 5
+#define DRIVING_CORRECTION 0.9995f
 int max_driving_speed;
 int drop_speed;
 
@@ -120,7 +120,7 @@ void drop(){
 void find_wall(){
     int min_dist = 2500;
 
-    rotate('r', 360, 0.2, 0);
+    rotate('r', 360, 0.1, 0);
     sleep_ms(1);
     while (tacho_is_running(MOTOR_RIGHT)){
         int curr_dist = sensor_get_value0(sensor_us, 0);
@@ -132,7 +132,7 @@ void find_wall(){
         }
     }
 
-    rotate('l', 360, 0.2, 0);
+    rotate('l', 360, 0.1, 0);
     sleep_ms(1);
     while (tacho_is_running(MOTOR_LEFT)){
         int curr_dist = sensor_get_value0(sensor_us, 0);
