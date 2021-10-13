@@ -24,6 +24,7 @@ int main(void){
     from_wall(500, 0.3);
     
     rotate('l', 180, 0.1, 1);
+    
     drop();
     rotate('l', 90, 0.1, 1);
 
