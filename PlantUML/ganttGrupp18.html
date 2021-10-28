@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title>GANTT Grupp 18</title>
+    </head>
+<body>
+  <div class="mermaid">
+    gantt
+    title           Terminsplanering - Ganttschema
+    dateFormat      YYYY-MM-DD
+    %%axisFormat    %a %d/%b
+    excludes weekends
+    
+    section Faser
+    Definitionsfas  :done, 2021-09-08, 2021-09-24
+    Utforskningsfas :done, 2021-09-15, 2021-09-28
+    Konstruktion    :done, 2021-09-24, 2021-10-08
+    Test            :done, 2021-09-27, 2021-10-11
+    
+    section Iterationer
+    Iteration 1     :done, i1,  2021-09-17, 5d
+    Iteration 2     :done, i2, after i1, 5d
+    Iteration 3     :done, i3, after i2, 5d
+    Iteration 4     :done, i4, after i3, 5d
+    Iteration 5     :done, i5, after i4, 5d
+    
+    %%section Dokumentation  
+    %%Riskanalys          :active, RA, 2021-09-27, 5d
+    %%Kostnadsplan        :active, kp, 2021-09-27, 5d
+    %%Utbildningsplan     :active, up, 2021-09-27, 5d
+    %%Intressenter         :active, RA, 2021-09-27, 5d
+
+    %%milestone Terminsstart
+    section Läsperioder
+    Läsperiod 1                 :p1,        2021-08-30, 2021-10-15
+    Eget arbete                 :ea1,       2021-10-18, 2021-10-20
+    Examinationsperiod          :crit, et1, 2021-10-21, 2021-10-22
+    
+    section Handledning
+    Handledning 1   :done,	h1,     2021-09-08, 2021-09-09
+    Handledning 2   :done,	h2,     after h1,   2021-09-17
+    Handledning 3   :done,	h3,     after h2,   2021-09-23
+    Handledning 4   :done,	h4,     after h3,   2021-09-30
+    Handledning 5   :done,	h5,     after h4,   2021-10-07
+    
+    section Examination
+    Muntlig presentation Projectarbete 12 okt   :mp, 2021-10-12, 1d
+    Praktisk Demo 13 okt                        :pd, 2021-10-13, 1d
+    Kusrapport 28 okt                           :active, kr, after h2, 2021-10-28
+    
+    section Uppgifter
+    Muntlig Presentation 2 - 6 okt                :mp2, 2021-10-06, 1d
+
+    click h1 href "https://canvas.kth.se/courses/28714/pages/handledning-1"
+    click h2 href "https://canva-.kth.se/courses/28714/pages/handledning-2"
+    click h3 href "https://canvas.kth.se/courses/28714/pages/handledning-3"
+    click h4 href "https://canvas.kth.se/courses/28714/pages/handledning-4"
+    click h5 href "https://canvas.kth.se/courses/28714/pages/handledning-5"
+    
+    click pd href "https://canvas.kth.se/courses/28714/pages/projektuppgift-lego-robot" 
+    click mp2 href "https://canvas.kth.se/courses/28714/assignments/160154"
+    click kr href "https://canvas.kth.se/courses/28714/pages/kursrapport-instruktioner?module_item_id=343765"
+
+</div>
+  
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+    var config = {
+      startOnLoad:true,
+      securityLevel:'antiscript',
+    };
+    mermaid.initialize(config)
+
+</script>
+</body>
+</html>
